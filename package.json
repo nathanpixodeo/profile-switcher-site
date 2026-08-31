@@ -1,0 +1,14 @@
+{
+  "name": "claude-profile-manager-landing",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static landing page for the unofficial Claude Profile Manager CLI.",
+  "license": "UNLICENSED",
+  "scripts": {
+    "test": "node --test",
+    "verify": "node --check script.js && node --test"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}
