@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="Visual setup, command, isolation, troubleshooting, and uninstall documentation for the unofficial Claude Profile Manager CLI."
+    >
+    <meta name="theme-color" content="#f2eadc">
+    <title>Documentation — Profile CLI for Claude Code</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23181714'/%3E%3Cpath d='M14 16h12v32H14zm24 0h12L35 48H23z' fill='%23f2eadc'/%3E%3C/svg%3E"
+    >
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./docs.css">
+    <script src="./script.js" defer></script>
+  </head>
+  <body class="docs-page">
+    <a class="skip-link" href="#main-content">Skip to documentation</a>
+
+    <header class="site-header">
+      <a class="wordmark" href="./index.html" aria-label="Profile CLI overview">
+        <span class="wordmark-mark" aria-hidden="true">P/</span>
+        <span>Profile CLI</span>
+        <span class="wordmark-note">docs</span>
+      </a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a class="nav-primary" href="./index.html">Overview</a>
+        <a href="#quick-start">Quick start</a>
+        <a href="#commands">Commands</a>
+        <a href="#troubleshooting">Troubleshooting</a>
+        <a
+          class="nav-source"
+          href="https://www.npmjs.com/package/@nathanpixodeo/claude-profile-manager"
+          target="_blank"
+          rel="noreferrer"
+        >npm <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <section class="docs-hero" id="top" aria-labelledby="docs-title">
+        <div class="docs-hero-copy" data-reveal>
+          <p class="docs-kicker"><span aria-hidden="true">DOC /</span> v0.2.1 field manual</p>
+          <h1 id="docs-title">Operate profiles.<br><em>Keep lanes clear.</em></h1>
+          <p class="docs-hero-lede">
+            Install, create, launch, diagnose, share, and remove profile commands without
+            crossing account or data boundaries.
+          </p>
+          <div class="docs-hero-actions">
+            <a class="button button-primary" href="#quick-start">Start in three steps <span aria-hidden="true">↓</span></a>
+            <a class="text-link" href="#commands">Open command index</a>
+          </div>
+        </div>
+
+        <aside class="docs-brief" data-reveal aria-label="Documentation scope">
+          <p class="docs-brief-label">RUNBOOK / SUPPORTED PATH</p>
+          <dl>
+            <div><dt>Package</dt><dd>v0.2.1</dd></div>
+            <div><dt>Runtime</dt><dd>Node.js 22+</dd></div>
+            <div><dt>Preferred</dt><dd>Node.js 24 LTS</dd></div>
+            <div><dt>Platforms</dt><dd>Windows · Linux · macOS</dd></div>
+          </dl>
+          <p>
+            Native <code>claude</code> remains the default profile. Named commands set one
+            documented variable: <code>CLAUDE_CONFIG_DIR</code>.
+          </p>
+        </aside>
+      </section>
+
+      <section class="docs-facts" aria-label="Documentation facts">
+        <p><strong>01</strong><span>Install once</span></p>
+        <p><strong>02</strong><span>Name a lane</span></p>
+        <p><strong>03</strong><span>Launch anywhere</span></p>
+        <p><strong>00</strong><span>Background services</span></p>
+      </section>
+
+      <div class="docs-shell">
+        <aside class="docs-toc" aria-label="Documentation sections">
+          <p>On this page</p>
+          <ol>
+            <li><a href="#requirements"><span>01</span> Requirements</a></li>
+            <li><a href="#quick-start"><span>02</span> Quick start</a></li>
+            <li><a href="#commands"><span>03</span> Commands</a></li>
+            <li><a href="#isolation"><span>04</span> Isolation</a></li>
+            <li><a href="#sharing"><span>05</span> Sharing</a></li>
+            <li><a href="#troubleshooting"><span>06</span> Troubleshooting</a></li>
+            <li><a href="#uninstall"><span>07</span> Uninstall</a></li>
+            <li><a href="#safety"><span>08</span> Safety</a></li>
+          </ol>
+        </aside>
+
+        <article class="docs-content">
+          <section class="doc-section" id="requirements" aria-labelledby="requirements-title" data-reveal>
+            <header class="doc-heading">
+              <p class="doc-number">01 / REQUIREMENTS</p>
+              <h2 id="requirements-title">Check the ground first.</h2>
+              <p>Three tools must resolve before a profile command can launch.</p>
+            </header>
+
+            <div class="requirement-grid">
+              <article>
+                <span aria-hidden="true">N/</span>
+                <h3>Node.js 22+</h3>
+                <p>Node.js 24 LTS recommended. npm must be available in the same terminal.</p>
+              </article>
+              <article>
+                <span aria-hidden="true">C/</span>
+                <h3>Claude Code</h3>
+                <p>The official <code>claude</code> executable must already resolve on <code>PATH</code>.</p>
+              </article>
+              <article>
+                <span aria-hidden="true">O/</span>
+                <h3>Supported OS</h3>
+                <p>Windows 10/11/Server, Node-supported Linux, or Node-supported macOS.</p>
+              </article>
+            </div>
+
+            <div class="doc-callout doc-callout-ink">
+              <strong>Windows prefix check</strong>
+              <p>If <code>npm prefix -g</code> contains <code>&amp;</code>, configure a writable prefix without shell metacharacters before installing. Spaces are supported.</p>
+            </div>
+          </section>
+
+          <section class="doc-section" id="quick-start" aria-labelledby="quick-start-title" data-reveal>
+            <header class="doc-heading">
+              <p class="doc-number">02 / QUICK START</p>
+              <h2 id="quick-start-title">First profile in three moves.</h2>
+              <p>The combined add command creates the directory, creates a launcher, opens Claude Code login, and repairs onboarding state.</p>
+            </header>
+
+            <ol class="doc-steps">
+              <li>
+                <span class="doc-step-number">01</span>
+                <div>
+                  <h3>Install globally</h3>
+                  <p>Install the public package, then validate the environment.</p>
+                  <div class="docs-code">
+                    <div class="docs-code-head">
+                      <span>Terminal</span>
+                      <button type="button" data-copy="npm install -g @nathanpixodeo/claude-profile-manager" aria-label="Copy install command"><span class="copy-label">Copy</span></button>
+                    </div>
+                    <pre><code>npm install -g @nathanpixodeo/claude-profile-manager</code></pre>
+                    <p class="copy-status" aria-live="polite"></p>
+                  </div>
+                  <div class="docs-code docs-code-compact">
+                    <div class="docs-code-head">
+                      <span>Environment check</span>
+                      <button type="button" data-copy="claude-profiles doctor" aria-label="Copy doctor command"><span class="copy-label">Copy</span></button>
+                    </div>
+                    <pre><code>claude-profiles doctor</code></pre>
+                    <p class="copy-status" aria-live="polite"></p>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <span class="doc-step-number">02</span>
+                <div>
+                  <h3>Create an authorized lane</h3>
+                  <p><code>team</code> becomes the profile name; <code>claude-team</code> becomes its direct launcher.</p>
+                  <div class="docs-code">
+                    <div class="docs-code-head">
+                      <span>Create + launcher + login</span>
+                      <button type="button" data-copy="claude-profiles add team --command claude-team --login" aria-label="Copy profile creation command"><span class="copy-label">Copy</span></button>
+                    </div>
+                    <pre><code>claude-profiles add team --command claude-team --login</code></pre>
+                    <p class="copy-status" aria-live="polite"></p>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <span class="doc-step-number">03</span>
+                <div>
+                  <h3>Launch from any project</h3>
+                  <p>Generated launchers forward Claude arguments and preserve Claude's exit code.</p>
+                  <div class="docs-code">
+                    <div class="docs-code-head">
+                      <span>Named launcher</span>
+                      <button type="button" data-copy="claude-team --continue" aria-label="Copy named launcher command"><span class="copy-label">Copy</span></button>
+                    </div>
+                    <pre><code>claude-team
+claude-team --continue
+claude-team --resume</code></pre>
+                    <p class="copy-status" aria-live="polite"></p>
+                  </div>
+                </div>
+              </li>
+            </ol>
+
+            <div class="doc-callout">
+              <strong>Keep the default lane intact</strong>
+              <p>Run native <code>claude</code> for the reserved <code>max</code> profile at <code>~/.claude</code>. Named launchers use isolated directories.</p>
+            </div>
+          </section>
+
+          <section class="doc-section" id="commands" aria-labelledby="commands-title" data-reveal>
+            <header class="doc-heading">
+              <p class="doc-number">03 / COMMAND INDEX</p>
+              <h2 id="commands-title">One surface. Four jobs.</h2>
+              <p>Run <code>claude-profiles --help</code> for the same canonical command surface in your terminal.</p>
+            </header>
+
+            <div class="command-groups">
+              <section class="command-group" aria-labelledby="command-profile-title">
+                <h3 id="command-profile-title"><span>01</span> Profiles</h3>
+                <dl>
+                  <div><dt><code>claude-profiles</code></dt><dd>Open the interactive terminal menu when a TTY is available.</dd></div>
+                  <div><dt><code>claude-profiles list</code></dt><dd>List profile name, authentication state, and directory.</dd></div>
+                  <div><dt><code>claude-profiles add &lt;profile&gt; [--command &lt;claude-name&gt;] [--login]</code></dt><dd>Create an isolated profile and managed launcher; optionally authenticate immediately.</dd></div>
+                </dl>
+              </section>
+
+              <section class="command-group" aria-labelledby="command-launch-title">
+                <h3 id="command-launch-title"><span>02</span> Launch</h3>
+                <dl>
+                  <div><dt><code>claude-profiles run &lt;profile&gt; [--] [claude arguments...]</code></dt><dd>Launch a profile and forward the complete Claude argument array.</dd></div>
+                  <div><dt><code>claude-profiles continue &lt;profile&gt;</code></dt><dd>Launch with <code>--continue</code>.</dd></div>
+                  <div><dt><code>claude-profiles resume &lt;profile&gt;</code></dt><dd>Launch with <code>--resume</code>.</dd></div>
+                  <div><dt><code>claude-profiles login &lt;profile&gt;</code></dt><dd>Run Claude Code's official login flow. Re-login for reserved <code>max</code> is blocked.</dd></div>
+                  <div><dt><code>claude-profiles status &lt;profile&gt;</code></dt><dd>Run Claude Code authentication status inside the selected profile.</dd></div>
+                </dl>
+              </section>
+
+              <section class="command-group" aria-labelledby="command-maintenance-title">
+                <h3 id="command-maintenance-title"><span>03</span> Maintenance</h3>
+                <dl>
+                  <div><dt><code>claude-profiles diagnose &lt;profile&gt;</code></dt><dd>Inspect profile onboarding and shared-directory state.</dd></div>
+                  <div><dt><code>claude-profiles repair-onboarding &lt;profile&gt;</code></dt><dd>Repair onboarding metadata without copying credentials.</dd></div>
+                  <div><dt><code>claude-profiles share-sessions &lt;profile&gt; [--backup-existing]</code></dt><dd>Link default project sessions after explicit ownership and backup checks.</dd></div>
+                  <div><dt><code>claude-profiles share-skills &lt;profile&gt; [--backup-existing]</code></dt><dd>Link default user skills under the same safety rules.</dd></div>
+                  <div><dt><code>claude-profiles doctor</code></dt><dd>Check Node.js, npm, Claude Code, storage, and command-directory readiness.</dd></div>
+                </dl>
+              </section>
+
+              <section class="command-group" aria-labelledby="command-launcher-title">
+                <h3 id="command-launcher-title"><span>04</span> Launchers</h3>
+                <dl>
+                  <div><dt><code>claude-profiles command create &lt;profile&gt; [claude-command]</code></dt><dd>Create or rename one managed launcher.</dd></div>
+                  <div><dt><code>claude-profiles command remove &lt;claude-command&gt;</code></dt><dd>Remove one managed launcher while keeping profile data.</dd></div>
+                  <div><dt><code>claude-profiles command list</code></dt><dd>Show launcher-to-profile mappings and state.</dd></div>
+                  <div><dt><code>claude-profiles command sync</code></dt><dd>Rebuild managed launchers for existing named profiles.</dd></div>
+                  <div><dt><code>claude-profiles command clean</code></dt><dd>Remove generated launchers but preserve mappings for reinstall.</dd></div>
+                </dl>
+              </section>
+            </div>
+
+            <details class="legacy-note">
+              <summary>Using legacy v2 flags?<span aria-hidden="true">+</span></summary>
+              <p><code>--list</code>, <code>--use</code>, <code>--diagnose</code>, <code>--repair-onboarding</code>, sharing flags, and command-management flags remain supported. Prefer the canonical commands above for new scripts.</p>
+            </details>
+          </section>
+
+          <section class="doc-section" id="isolation" aria-labelledby="isolation-title" data-reveal>
+            <header class="doc-heading">
+              <p class="doc-number">04 / ISOLATION MAP</p>
+              <h2 id="isolation-title">Know what lives where.</h2>
+              <p>Profile configuration stays local. Launchers route; they do not merge accounts.</p>
+            </header>
+
+            <div class="path-map" aria-label="Profile storage map">
+              <div><span>DEFAULT / MAX</span><code>~/.claude</code><strong>native claude</strong></div>
+              <div><span>NAMED PROFILE</span><code>~/.claude-profiles/&lt;name&gt;</code><strong>CLAUDE_CONFIG_DIR</strong></div>
+              <div><span>MAPPINGS</span><code>~/.claude-profiles/.npm-commands.json</code><strong>launcher registry</strong></div>
+              <div><span>LAUNCHERS</span><code>global npm executable directory</code><strong>.cmd or POSIX</strong></div>
+            </div>
+
+            <ul class="boundary-list">
+              <li><strong>Credentials:</strong> never printed, copied, moved, bundled, or deleted.</li>
+              <li><strong>Sessions and skills:</strong> isolated until you explicitly link them.</li>
+              <li><strong>Plugins, history, and state:</strong> remain inside each profile directory.</li>
+              <li><strong>Billing and limits:</strong> unchanged by separate directories or launchers.</li>
+            </ul>
+          </section>
+
+          <section class="doc-section" id="sharing" aria-labelledby="sharing-title" data-reveal>
+            <header class="doc-heading">
+              <p class="doc-number">05 / CONTROLLED SHARING</p>
+              <h2 id="sharing-title">Link data only when ownership matches.</h2>
+              <p>Sharing uses an NTFS junction on Windows or a directory symbolic link on Linux/macOS.</p>
+            </header>
+
+            <div class="sharing-grid">
+              <div class="docs-code">
+                <div class="docs-code-head">
+                  <span>Project sessions</span>
+                  <button type="button" data-copy="claude-profiles share-sessions team" aria-label="Copy session sharing command"><span class="copy-label">Copy</span></button>
+                </div>
+                <pre><code>claude-profiles share-sessions team</code></pre>
+                <p class="copy-status" aria-live="polite"></p>
+              </div>
+              <div class="docs-code">
+                <div class="docs-code-head">
+                  <span>User skills</span>
+                  <button type="button" data-copy="claude-profiles share-skills team" aria-label="Copy skill sharing command"><span class="copy-label">Copy</span></button>
+                </div>
+                <pre><code>claude-profiles share-skills team</code></pre>
+                <p class="copy-status" aria-live="polite"></p>
+              </div>
+            </div>
+
+            <div class="doc-callout doc-callout-warning">
+              <strong>Existing local data stops the command</strong>
+              <p>Exit code <code>2</code> means nothing changed. Close other Claude sessions, verify disclosure rights, then rerun with <code>--backup-existing</code>. Existing data moves to a timestamped, recoverable backup before linking.</p>
+            </div>
+            <p class="doc-rule">Never open the same shared session concurrently from two profiles. Never link across people, employers, customers, or organizations without every required right and approval.</p>
+          </section>
+
+          <section class="doc-section" id="troubleshooting" aria-labelledby="troubleshooting-title" data-reveal>
+            <header class="doc-heading">
+              <p class="doc-number">06 / TROUBLESHOOTING</p>
+              <h2 id="troubleshooting-title">Read the lane before repairing it.</h2>
+              <p>Start with <code>doctor</code>, then use the narrow check matching the symptom.</p>
+            </header>
+
+            <div class="diagnostic-route" aria-label="Diagnostic order">
+              <span>doctor</span><i aria-hidden="true"></i><span>status</span><i aria-hidden="true"></i><span>diagnose</span><i aria-hidden="true"></i><span>repair</span>
+            </div>
+
+            <div class="troubleshooting-list">
+              <details open>
+                <summary>Generated command is not found<span aria-hidden="true">+</span></summary>
+                <div>
+                  <p>Check environment and mapping state, then rebuild managed launchers.</p>
+                  <pre><code>claude-profiles doctor
+claude-profiles command list
+claude-profiles command sync</code></pre>
+                  <p>Inspect resolution with <code>where.exe claude-team</code> on Windows or <code>command -v claude-team</code> on Linux/macOS.</p>
+                </div>
+              </details>
+              <details>
+                <summary>Profile is not signed in<span aria-hidden="true">+</span></summary>
+                <div>
+                  <pre><code>claude-profiles status team
+claude-profiles login team</code></pre>
+                  <p>Login uses Claude Code's official flow. Re-login for reserved <code>max</code> is intentionally blocked.</p>
+                </div>
+              </details>
+              <details>
+                <summary>Onboarding repeats or profile state looks wrong<span aria-hidden="true">+</span></summary>
+                <div>
+                  <pre><code>claude-profiles diagnose team
+claude-profiles repair-onboarding team</code></pre>
+                  <p>Repair onboarding metadata only; credentials remain untouched.</p>
+                </div>
+              </details>
+              <details>
+                <summary>Sharing exits with code 2<span aria-hidden="true">+</span></summary>
+                <div>
+                  <p>Existing local sessions or skills were detected. Close Claude sessions, review the boundary, then opt into a recoverable backup:</p>
+                  <pre><code>claude-profiles share-sessions team --backup-existing</code></pre>
+                </div>
+              </details>
+              <details>
+                <summary>Windows global npm commands fail before launch<span aria-hidden="true">+</span></summary>
+                <div>
+                  <pre><code>npm prefix -g</code></pre>
+                  <p>If the prefix contains <code>&amp;</code>, move it to a writable path without shell metacharacters and ensure that directory is on <code>PATH</code>.</p>
+                </div>
+              </details>
+            </div>
+          </section>
+
+          <section class="doc-section" id="uninstall" aria-labelledby="uninstall-title" data-reveal>
+            <header class="doc-heading">
+              <p class="doc-number">07 / UNINSTALL</p>
+              <h2 id="uninstall-title">Remove launchers. Keep profile data.</h2>
+              <p>Clean generated commands before uninstalling the npm package.</p>
+            </header>
+
+            <div class="docs-code">
+              <div class="docs-code-head">
+                <span>Safe removal order</span>
+                <button type="button" data-copy="claude-profiles command clean&#10;npm uninstall -g @nathanpixodeo/claude-profile-manager" aria-label="Copy uninstall commands"><span class="copy-label">Copy</span></button>
+              </div>
+              <pre><code>claude-profiles command clean
+npm uninstall -g @nathanpixodeo/claude-profile-manager</code></pre>
+              <p class="copy-status" aria-live="polite"></p>
+            </div>
+
+            <p class="retention-note"><strong>Retained:</strong> profile directories, command mappings, sessions, state, skills, and credentials. No lifecycle script deletes them.</p>
+          </section>
+
+          <section class="doc-section doc-section-safety" id="safety" aria-labelledby="docs-safety-title" data-reveal>
+            <header class="doc-heading">
+              <p class="doc-number">08 / AUTHORIZED USE</p>
+              <h2 id="docs-safety-title">Isolation is not a limit bypass.</h2>
+              <p>Use only accounts you own or are explicitly authorized to administer.</p>
+            </header>
+
+            <div class="safety-manifest">
+              <p>Separate directories do not aggregate, extend, evade, or alter billing, subscription allowances, rate limits, bans, safeguards, product restrictions, or regional access.</p>
+              <p>The tool does not proxy, intercept, modify, or automate Anthropic requests. Authentication remains inside Claude Code.</p>
+            </div>
+
+            <p class="policy-links">
+              Read:
+              <a href="https://unpkg.com/@nathanpixodeo/claude-profile-manager@0.2.1/NOTICE.md" target="_blank" rel="noreferrer">Packaged Notice</a>,
+              <a href="https://www.anthropic.com/legal/consumer-terms" target="_blank" rel="noreferrer">Consumer Terms</a>,
+              <a href="https://www.anthropic.com/legal/commercial-terms" target="_blank" rel="noreferrer">Commercial Terms</a>,
+              <a href="https://www.anthropic.com/legal/aup" target="_blank" rel="noreferrer">Usage Policy</a>, and
+              <a href="https://www.anthropic.com/supported-countries" target="_blank" rel="noreferrer">Supported Regions</a>.
+            </p>
+          </section>
+        </article>
+      </div>
+    </main>
+
+    <footer class="site-footer docs-footer">
+      <p><strong>Profile CLI documentation</strong> <span>Verified for package v0.2.1.</span></p>
+      <p>Independent and unofficial. Static page; no analytics or tracking.</p>
+      <div><a href="./index.html">Overview</a> · <a href="#top">Back to top <span aria-hidden="true">↑</span></a></div>
+    </footer>
+  </body>
+</html>

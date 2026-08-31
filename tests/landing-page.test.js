@@ -37,6 +37,7 @@ test('landing page exposes required sections and accessibility landmarks', () =>
   assert.match(html, /<a class="skip-link" href="#main-content">/);
   assert.match(html, /<header class="site-header">/);
   assert.match(html, /<nav class="site-nav" aria-label="Primary navigation">/);
+  assert.match(html, /<a class="nav-primary" href="\.\/docs\.html">Documentation<\/a>/);
   assert.match(html, /<main id="main-content">/);
   assert.match(html, /<footer class="site-footer">/);
   assert.equal(count(/<h1\b/g), 1, 'Landing page must have exactly one h1.');

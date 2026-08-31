@@ -26,7 +26,7 @@ async function copyText(text) {
 for (const button of document.querySelectorAll('[data-copy]')) {
   button.addEventListener('click', async () => {
     const label = button.querySelector('.copy-label');
-    const region = button.closest('.install-block, .cta-inner');
+    const region = button.closest('.install-block, .cta-inner, .docs-code');
     const status = region ? region.querySelector('.copy-status') : null;
     const original = label.textContent;
 

@@ -7,6 +7,11 @@ package.
 The page uses local HTML, CSS, and JavaScript only. It has no build step,
 runtime dependencies, analytics, cookies, external fonts, or tracking scripts.
 
+## Pages
+
+- `index.html` — product overview and install landing page.
+- `docs.html` — visual setup, command, isolation, troubleshooting, and uninstall guide.
+
 ## Preview
 
 From the repository root:
@@ -15,7 +20,8 @@ From the repository root:
 python -m http.server 4173
 ```
 
-Open <http://127.0.0.1:4173/>.
+Open <http://127.0.0.1:4173/> for the overview or
+<http://127.0.0.1:4173/docs.html> for documentation.
 
 ## Verify
 

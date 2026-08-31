@@ -1372,7 +1372,7 @@ html.is-enhanced [data-reveal].is-visible {
     min-height: 4.5rem;
   }
 
-  .site-nav a:not(.nav-source) {
+  .site-nav a:not(.nav-source):not(.nav-primary) {
     display: none;
   }
 
