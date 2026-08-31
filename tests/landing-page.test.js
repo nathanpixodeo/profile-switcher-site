@@ -16,15 +16,15 @@ function count(pattern, content = html) {
 }
 
 test('landing page has required content and accurate product claims', () => {
-  assert.match(html, /Profile CLI for Claude Code/);
-  assert.match(html, /npm install -g @nathanpixodeo\/claude-profile-manager/);
+  assert.match(html, /Profile Switcher/);
+  assert.match(html, /npm install -g @nathanpixodeo\/profile-switcher/);
   assert.match(html, /Node\.js 22\+/);
   assert.match(html, /Windows 10, 11, and Server/);
   assert.match(html, /Node\.js-supported distributions/);
   assert.match(html, /Node\.js-supported versions/);
   assert.match(html, /CLAUDE_CONFIG_DIR/);
-  assert.match(html, /claude-profiles doctor/);
-  assert.match(html, /claude-team --continue/);
+  assert.match(html, /profile-switcher doctor/);
+  assert.match(html, /profile-team --continue/);
   assert.match(html, /not affiliated with, endorsed by, sponsored by, or maintained by Anthropic/i);
   assert.match(html, /Use only accounts you own or are explicitly authorized to administer/i);
   assert.match(html, /do not (?:change|aggregate, extend, evade, or alter) billing, subscription allowances, rate limits, bans, safeguards, or product restrictions/i);
@@ -56,12 +56,14 @@ test('landing page exposes required sections and accessibility landmarks', () =>
 
 test('landing links use public destinations and safe external-link attributes', () => {
   const requiredUrls = [
-    'https://www.npmjs.com/package/@nathanpixodeo/claude-profile-manager',
-    'https://unpkg.com/@nathanpixodeo/claude-profile-manager@0.2.1/NOTICE.md',
+    'https://www.npmjs.com/package/@nathanpixodeo/profile-switcher',
+    'https://unpkg.com/@nathanpixodeo/profile-switcher@1.0.0/NOTICE.md',
     'https://www.anthropic.com/legal/consumer-terms',
     'https://www.anthropic.com/legal/commercial-terms',
     'https://www.anthropic.com/legal/aup',
     'https://www.anthropic.com/supported-countries',
+    'https://code.claude.com/docs/en/legal-and-compliance',
+    'https://www.anthropic.com/legal/trademark-guidelines',
   ];
 
   for (const url of requiredUrls) {
@@ -82,11 +84,13 @@ test('landing links use public destinations and safe external-link attributes', 
   assert.doesNotMatch(html, /(?:src|href)="https?:\/\/[^\"]+\.(?:js|css|woff2?|ttf)(?:\?[^\"]*)?"/i);
   assert.doesNotMatch(html, /googletagmanager|google-analytics|segment|mixpanel|hotjar|plausible|posthog/i);
   assert.doesNotMatch(script, /document\.cookie|localStorage|sessionStorage|fetch\(|XMLHttpRequest/);
+  assert.match(html, /No analytics, telemetry, cookies, external fonts, or tracking scripts/);
 });
 
-test('repository remains private-to-npm and dependency-free', () => {
+test('repository remains private-to-npm, MIT-licensed, and dependency-free', () => {
   assert.equal(packageMetadata.private, true, 'Repository package metadata must prevent npm publication.');
-  assert.equal(packageMetadata.license, 'UNLICENSED');
+  assert.equal(packageMetadata.license, 'MIT');
+  assert.equal(fs.existsSync(path.join(root, 'LICENSE')), true, 'MIT license file is missing.');
   assert.equal(packageMetadata.dependencies, undefined, 'Landing page must not add runtime dependencies.');
   assert.equal(packageMetadata.devDependencies, undefined, 'Landing checks must use only built-in Node.js tools.');
 });

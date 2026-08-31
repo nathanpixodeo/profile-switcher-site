@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta
       name="description"
-      content="Visual setup, command, isolation, troubleshooting, and uninstall documentation for the unofficial Claude Profile Manager CLI."
+      content="Visual setup, migration, command, isolation, troubleshooting, and uninstall documentation for Profile Switcher."
     >
     <meta name="theme-color" content="#f2eadc">
-    <title>Documentation — Profile CLI for Claude Code</title>
+    <title>Documentation — Profile Switcher</title>
     <link
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23181714'/%3E%3Cpath d='M14 16h12v32H14zm24 0h12L35 48H23z' fill='%23f2eadc'/%3E%3C/svg%3E"
@@ -21,9 +21,9 @@
     <a class="skip-link" href="#main-content">Skip to documentation</a>
 
     <header class="site-header">
-      <a class="wordmark" href="./index.html" aria-label="Profile CLI overview">
+      <a class="wordmark" href="./index.html" aria-label="Profile Switcher overview">
         <span class="wordmark-mark" aria-hidden="true">P/</span>
-        <span>Profile CLI</span>
+        <span>Profile Switcher</span>
         <span class="wordmark-note">docs</span>
       </a>
       <nav class="site-nav" aria-label="Primary navigation">
@@ -33,7 +33,7 @@
         <a href="#troubleshooting">Troubleshooting</a>
         <a
           class="nav-source"
-          href="https://www.npmjs.com/package/@nathanpixodeo/claude-profile-manager"
+          href="https://www.npmjs.com/package/@nathanpixodeo/profile-switcher"
           target="_blank"
           rel="noreferrer"
         >npm <span aria-hidden="true">↗</span></a>
@@ -43,7 +43,7 @@
     <main id="main-content">
       <section class="docs-hero" id="top" aria-labelledby="docs-title">
         <div class="docs-hero-copy" data-reveal>
-          <p class="docs-kicker"><span aria-hidden="true">DOC /</span> v0.2.1 field manual</p>
+          <p class="docs-kicker"><span aria-hidden="true">DOC /</span> v1.0.0 field manual</p>
           <h1 id="docs-title">Operate profiles.<br><em>Keep lanes clear.</em></h1>
           <p class="docs-hero-lede">
             Install, create, launch, diagnose, share, and remove profile commands without
@@ -58,7 +58,7 @@
         <aside class="docs-brief" data-reveal aria-label="Documentation scope">
           <p class="docs-brief-label">RUNBOOK / SUPPORTED PATH</p>
           <dl>
-            <div><dt>Package</dt><dd>v0.2.1</dd></div>
+            <div><dt>Package</dt><dd>v1.0.0</dd></div>
             <div><dt>Runtime</dt><dd>Node.js 22+</dd></div>
             <div><dt>Preferred</dt><dd>Node.js 24 LTS</dd></div>
             <div><dt>Platforms</dt><dd>Windows · Linux · macOS</dd></div>
@@ -128,7 +128,7 @@
             <header class="doc-heading">
               <p class="doc-number">02 / QUICK START</p>
               <h2 id="quick-start-title">First profile in three moves.</h2>
-              <p>The combined add command creates the directory, creates a launcher, opens Claude Code login, and repairs onboarding state.</p>
+              <p>The combined add command creates the directory and launcher, then opens Claude Code's official login flow. Profile Switcher does not modify onboarding state.</p>
             </header>
 
             <ol class="doc-steps">
@@ -140,17 +140,17 @@
                   <div class="docs-code">
                     <div class="docs-code-head">
                       <span>Terminal</span>
-                      <button type="button" data-copy="npm install -g @nathanpixodeo/claude-profile-manager" aria-label="Copy install command"><span class="copy-label">Copy</span></button>
+                      <button type="button" data-copy="npm install -g @nathanpixodeo/profile-switcher" aria-label="Copy install command"><span class="copy-label">Copy</span></button>
                     </div>
-                    <pre><code>npm install -g @nathanpixodeo/claude-profile-manager</code></pre>
+                    <pre><code>npm install -g @nathanpixodeo/profile-switcher</code></pre>
                     <p class="copy-status" aria-live="polite"></p>
                   </div>
                   <div class="docs-code docs-code-compact">
                     <div class="docs-code-head">
                       <span>Environment check</span>
-                      <button type="button" data-copy="claude-profiles doctor" aria-label="Copy doctor command"><span class="copy-label">Copy</span></button>
+                      <button type="button" data-copy="profile-switcher doctor" aria-label="Copy doctor command"><span class="copy-label">Copy</span></button>
                     </div>
-                    <pre><code>claude-profiles doctor</code></pre>
+                    <pre><code>profile-switcher doctor</code></pre>
                     <p class="copy-status" aria-live="polite"></p>
                   </div>
                 </div>
@@ -159,13 +159,13 @@
                 <span class="doc-step-number">02</span>
                 <div>
                   <h3>Create an authorized lane</h3>
-                  <p><code>team</code> becomes the profile name; <code>claude-team</code> becomes its direct launcher.</p>
+                  <p><code>team</code> becomes the profile name; <code>profile-team</code> becomes its direct launcher.</p>
                   <div class="docs-code">
                     <div class="docs-code-head">
                       <span>Create + launcher + login</span>
-                      <button type="button" data-copy="claude-profiles add team --command claude-team --login" aria-label="Copy profile creation command"><span class="copy-label">Copy</span></button>
+                      <button type="button" data-copy="profile-switcher add team --command profile-team --login" aria-label="Copy profile creation command"><span class="copy-label">Copy</span></button>
                     </div>
-                    <pre><code>claude-profiles add team --command claude-team --login</code></pre>
+                    <pre><code>profile-switcher add team --command profile-team --login</code></pre>
                     <p class="copy-status" aria-live="polite"></p>
                   </div>
                 </div>
@@ -178,11 +178,11 @@
                   <div class="docs-code">
                     <div class="docs-code-head">
                       <span>Named launcher</span>
-                      <button type="button" data-copy="claude-team --continue" aria-label="Copy named launcher command"><span class="copy-label">Copy</span></button>
+                      <button type="button" data-copy="profile-team --continue" aria-label="Copy named launcher command"><span class="copy-label">Copy</span></button>
                     </div>
-                    <pre><code>claude-team
-claude-team --continue
-claude-team --resume</code></pre>
+                    <pre><code>profile-team
+profile-team --continue
+profile-team --resume</code></pre>
                     <p class="copy-status" aria-live="polite"></p>
                   </div>
                 </div>
@@ -193,62 +193,66 @@ claude-team --resume</code></pre>
               <strong>Keep the default lane intact</strong>
               <p>Run native <code>claude</code> for the reserved <code>max</code> profile at <code>~/.claude</code>. Named launchers use isolated directories.</p>
             </div>
+
+            <div class="doc-callout doc-callout-ink">
+              <strong>Migrating from the retired npm package?</strong>
+              <p>Uninstall the old package, install Profile Switcher, then run <code>profile-switcher command sync</code>. Existing <code>~/.claude-profiles</code> data, manifests, and <code>claude-*</code> launchers remain readable; nothing is copied or moved.</p>
+            </div>
           </section>
 
           <section class="doc-section" id="commands" aria-labelledby="commands-title" data-reveal>
             <header class="doc-heading">
               <p class="doc-number">03 / COMMAND INDEX</p>
               <h2 id="commands-title">One surface. Four jobs.</h2>
-              <p>Run <code>claude-profiles --help</code> for the same canonical command surface in your terminal.</p>
+              <p>Run <code>profile-switcher --help</code> for the same canonical command surface in your terminal.</p>
             </header>
 
             <div class="command-groups">
               <section class="command-group" aria-labelledby="command-profile-title">
                 <h3 id="command-profile-title"><span>01</span> Profiles</h3>
                 <dl>
-                  <div><dt><code>claude-profiles</code></dt><dd>Open the interactive terminal menu when a TTY is available.</dd></div>
-                  <div><dt><code>claude-profiles list</code></dt><dd>List profile name, authentication state, and directory.</dd></div>
-                  <div><dt><code>claude-profiles add &lt;profile&gt; [--command &lt;claude-name&gt;] [--login]</code></dt><dd>Create an isolated profile and managed launcher; optionally authenticate immediately.</dd></div>
+                  <div><dt><code>profile-switcher</code></dt><dd>Open the interactive terminal menu when a TTY is available.</dd></div>
+                  <div><dt><code>profile-switcher list</code></dt><dd>List profile name, authentication state, and directory.</dd></div>
+                  <div><dt><code>profile-switcher add &lt;profile&gt; [--command &lt;profile-name&gt;] [--login]</code></dt><dd>Create an isolated profile and managed launcher; optionally authenticate immediately.</dd></div>
                 </dl>
               </section>
 
               <section class="command-group" aria-labelledby="command-launch-title">
                 <h3 id="command-launch-title"><span>02</span> Launch</h3>
                 <dl>
-                  <div><dt><code>claude-profiles run &lt;profile&gt; [--] [claude arguments...]</code></dt><dd>Launch a profile and forward the complete Claude argument array.</dd></div>
-                  <div><dt><code>claude-profiles continue &lt;profile&gt;</code></dt><dd>Launch with <code>--continue</code>.</dd></div>
-                  <div><dt><code>claude-profiles resume &lt;profile&gt;</code></dt><dd>Launch with <code>--resume</code>.</dd></div>
-                  <div><dt><code>claude-profiles login &lt;profile&gt;</code></dt><dd>Run Claude Code's official login flow. Re-login for reserved <code>max</code> is blocked.</dd></div>
-                  <div><dt><code>claude-profiles status &lt;profile&gt;</code></dt><dd>Run Claude Code authentication status inside the selected profile.</dd></div>
+                  <div><dt><code>profile-switcher run &lt;profile&gt; [--] [claude arguments...]</code></dt><dd>Launch a profile and forward the complete Claude argument array.</dd></div>
+                  <div><dt><code>profile-switcher continue &lt;profile&gt;</code></dt><dd>Launch with <code>--continue</code>.</dd></div>
+                  <div><dt><code>profile-switcher resume &lt;profile&gt;</code></dt><dd>Launch with <code>--resume</code>.</dd></div>
+                  <div><dt><code>profile-switcher login &lt;profile&gt;</code></dt><dd>Run Claude Code's official login flow. Re-login for reserved <code>max</code> is blocked.</dd></div>
+                  <div><dt><code>profile-switcher status &lt;profile&gt;</code></dt><dd>Run Claude Code authentication status inside the selected profile.</dd></div>
                 </dl>
               </section>
 
               <section class="command-group" aria-labelledby="command-maintenance-title">
                 <h3 id="command-maintenance-title"><span>03</span> Maintenance</h3>
                 <dl>
-                  <div><dt><code>claude-profiles diagnose &lt;profile&gt;</code></dt><dd>Inspect profile onboarding and shared-directory state.</dd></div>
-                  <div><dt><code>claude-profiles repair-onboarding &lt;profile&gt;</code></dt><dd>Repair onboarding metadata without copying credentials.</dd></div>
-                  <div><dt><code>claude-profiles share-sessions &lt;profile&gt; [--backup-existing]</code></dt><dd>Link default project sessions after explicit ownership and backup checks.</dd></div>
-                  <div><dt><code>claude-profiles share-skills &lt;profile&gt; [--backup-existing]</code></dt><dd>Link default user skills under the same safety rules.</dd></div>
-                  <div><dt><code>claude-profiles doctor</code></dt><dd>Check Node.js, npm, Claude Code, storage, and command-directory readiness.</dd></div>
+                  <div><dt><code>profile-switcher diagnose &lt;profile&gt;</code></dt><dd>Inspect authentication and shared-directory state without modifying profile metadata.</dd></div>
+                  <div><dt><code>profile-switcher share-sessions &lt;profile&gt; --confirm-same-owner [--backup-existing]</code></dt><dd>Link default project sessions after explicit ownership and backup checks.</dd></div>
+                  <div><dt><code>profile-switcher share-skills &lt;profile&gt; --confirm-same-owner [--backup-existing]</code></dt><dd>Link default user skills under the same safety rules.</dd></div>
+                  <div><dt><code>profile-switcher doctor</code></dt><dd>Check Node.js, npm, Claude Code, storage, and command-directory readiness.</dd></div>
                 </dl>
               </section>
 
               <section class="command-group" aria-labelledby="command-launcher-title">
                 <h3 id="command-launcher-title"><span>04</span> Launchers</h3>
                 <dl>
-                  <div><dt><code>claude-profiles command create &lt;profile&gt; [claude-command]</code></dt><dd>Create or rename one managed launcher.</dd></div>
-                  <div><dt><code>claude-profiles command remove &lt;claude-command&gt;</code></dt><dd>Remove one managed launcher while keeping profile data.</dd></div>
-                  <div><dt><code>claude-profiles command list</code></dt><dd>Show launcher-to-profile mappings and state.</dd></div>
-                  <div><dt><code>claude-profiles command sync</code></dt><dd>Rebuild managed launchers for existing named profiles.</dd></div>
-                  <div><dt><code>claude-profiles command clean</code></dt><dd>Remove generated launchers but preserve mappings for reinstall.</dd></div>
+                  <div><dt><code>profile-switcher command create &lt;profile&gt; [profile-command]</code></dt><dd>Create or rename one managed launcher.</dd></div>
+                  <div><dt><code>profile-switcher command remove &lt;profile-command&gt;</code></dt><dd>Remove one managed launcher while keeping profile data.</dd></div>
+                  <div><dt><code>profile-switcher command list</code></dt><dd>Show launcher-to-profile mappings and state.</dd></div>
+                  <div><dt><code>profile-switcher command sync</code></dt><dd>Rebuild managed launchers for existing named profiles.</dd></div>
+                  <div><dt><code>profile-switcher command clean</code></dt><dd>Remove generated launchers but preserve mappings for reinstall.</dd></div>
                 </dl>
               </section>
             </div>
 
             <details class="legacy-note">
               <summary>Using legacy v2 flags?<span aria-hidden="true">+</span></summary>
-              <p><code>--list</code>, <code>--use</code>, <code>--diagnose</code>, <code>--repair-onboarding</code>, sharing flags, and command-management flags remain supported. Prefer the canonical commands above for new scripts.</p>
+              <p><code>--list</code>, <code>--use</code>, <code>--diagnose</code>, sharing flags, and command-management flags remain supported through <code>profile-switcher</code>. The retired onboarding-repair behavior is intentionally unavailable.</p>
             </details>
           </section>
 
@@ -261,10 +265,12 @@ claude-team --resume</code></pre>
 
             <div class="path-map" aria-label="Profile storage map">
               <div><span>DEFAULT / MAX</span><code>~/.claude</code><strong>native claude</strong></div>
-              <div><span>NAMED PROFILE</span><code>~/.claude-profiles/&lt;name&gt;</code><strong>CLAUDE_CONFIG_DIR</strong></div>
-              <div><span>MAPPINGS</span><code>~/.claude-profiles/.npm-commands.json</code><strong>launcher registry</strong></div>
+              <div><span>NAMED PROFILE</span><code>~/.profile-switcher/&lt;name&gt;</code><strong>CLAUDE_CONFIG_DIR</strong></div>
+              <div><span>MAPPINGS</span><code>~/.profile-switcher/commands.json</code><strong>launcher registry</strong></div>
               <div><span>LAUNCHERS</span><code>global npm executable directory</code><strong>.cmd or POSIX</strong></div>
             </div>
+
+            <p class="doc-rule">Compatibility: when <code>~/.claude-profiles</code> already exists, Profile Switcher keeps using that legacy root and its <code>.npm-commands.json</code> manifest. Fresh installs use the paths shown above.</p>
 
             <ul class="boundary-list">
               <li><strong>Credentials:</strong> never printed, copied, moved, bundled, or deleted.</li>
@@ -285,17 +291,17 @@ claude-team --resume</code></pre>
               <div class="docs-code">
                 <div class="docs-code-head">
                   <span>Project sessions</span>
-                  <button type="button" data-copy="claude-profiles share-sessions team" aria-label="Copy session sharing command"><span class="copy-label">Copy</span></button>
+                  <button type="button" data-copy="profile-switcher share-sessions team --confirm-same-owner" aria-label="Copy session sharing command"><span class="copy-label">Copy</span></button>
                 </div>
-                <pre><code>claude-profiles share-sessions team</code></pre>
+                <pre><code>profile-switcher share-sessions team --confirm-same-owner</code></pre>
                 <p class="copy-status" aria-live="polite"></p>
               </div>
               <div class="docs-code">
                 <div class="docs-code-head">
                   <span>User skills</span>
-                  <button type="button" data-copy="claude-profiles share-skills team" aria-label="Copy skill sharing command"><span class="copy-label">Copy</span></button>
+                  <button type="button" data-copy="profile-switcher share-skills team --confirm-same-owner" aria-label="Copy skill sharing command"><span class="copy-label">Copy</span></button>
                 </div>
-                <pre><code>claude-profiles share-skills team</code></pre>
+                <pre><code>profile-switcher share-skills team --confirm-same-owner</code></pre>
                 <p class="copy-status" aria-live="polite"></p>
               </div>
             </div>
@@ -323,33 +329,32 @@ claude-team --resume</code></pre>
                 <summary>Generated command is not found<span aria-hidden="true">+</span></summary>
                 <div>
                   <p>Check environment and mapping state, then rebuild managed launchers.</p>
-                  <pre><code>claude-profiles doctor
-claude-profiles command list
-claude-profiles command sync</code></pre>
-                  <p>Inspect resolution with <code>where.exe claude-team</code> on Windows or <code>command -v claude-team</code> on Linux/macOS.</p>
+                  <pre><code>profile-switcher doctor
+profile-switcher command list
+profile-switcher command sync</code></pre>
+                  <p>Inspect resolution with <code>where.exe profile-team</code> on Windows or <code>command -v profile-team</code> on Linux/macOS.</p>
                 </div>
               </details>
               <details>
                 <summary>Profile is not signed in<span aria-hidden="true">+</span></summary>
                 <div>
-                  <pre><code>claude-profiles status team
-claude-profiles login team</code></pre>
+                  <pre><code>profile-switcher status team
+profile-switcher login team</code></pre>
                   <p>Login uses Claude Code's official flow. Re-login for reserved <code>max</code> is intentionally blocked.</p>
                 </div>
               </details>
               <details>
-                <summary>Onboarding repeats or profile state looks wrong<span aria-hidden="true">+</span></summary>
+                <summary>Profile state looks wrong<span aria-hidden="true">+</span></summary>
                 <div>
-                  <pre><code>claude-profiles diagnose team
-claude-profiles repair-onboarding team</code></pre>
-                  <p>Repair onboarding metadata only; credentials remain untouched.</p>
+                  <pre><code>profile-switcher diagnose team</code></pre>
+                  <p>Diagnosis is read-only. Profile Switcher never edits Claude Code onboarding state or credentials.</p>
                 </div>
               </details>
               <details>
                 <summary>Sharing exits with code 2<span aria-hidden="true">+</span></summary>
                 <div>
                   <p>Existing local sessions or skills were detected. Close Claude sessions, review the boundary, then opt into a recoverable backup:</p>
-                  <pre><code>claude-profiles share-sessions team --backup-existing</code></pre>
+                  <pre><code>profile-switcher share-sessions team --confirm-same-owner --backup-existing</code></pre>
                 </div>
               </details>
               <details>
@@ -372,10 +377,10 @@ claude-profiles repair-onboarding team</code></pre>
             <div class="docs-code">
               <div class="docs-code-head">
                 <span>Safe removal order</span>
-                <button type="button" data-copy="claude-profiles command clean&#10;npm uninstall -g @nathanpixodeo/claude-profile-manager" aria-label="Copy uninstall commands"><span class="copy-label">Copy</span></button>
+                <button type="button" data-copy="profile-switcher command clean&#10;npm uninstall -g @nathanpixodeo/profile-switcher" aria-label="Copy uninstall commands"><span class="copy-label">Copy</span></button>
               </div>
-              <pre><code>claude-profiles command clean
-npm uninstall -g @nathanpixodeo/claude-profile-manager</code></pre>
+              <pre><code>profile-switcher command clean
+npm uninstall -g @nathanpixodeo/profile-switcher</code></pre>
               <p class="copy-status" aria-live="polite"></p>
             </div>
 
@@ -396,11 +401,13 @@ npm uninstall -g @nathanpixodeo/claude-profile-manager</code></pre>
 
             <p class="policy-links">
               Read:
-              <a href="https://unpkg.com/@nathanpixodeo/claude-profile-manager@0.2.1/NOTICE.md" target="_blank" rel="noreferrer">Packaged Notice</a>,
+              <a href="https://unpkg.com/@nathanpixodeo/profile-switcher@1.0.0/NOTICE.md" target="_blank" rel="noreferrer">Packaged Notice</a>,
               <a href="https://www.anthropic.com/legal/consumer-terms" target="_blank" rel="noreferrer">Consumer Terms</a>,
               <a href="https://www.anthropic.com/legal/commercial-terms" target="_blank" rel="noreferrer">Commercial Terms</a>,
               <a href="https://www.anthropic.com/legal/aup" target="_blank" rel="noreferrer">Usage Policy</a>, and
-              <a href="https://www.anthropic.com/supported-countries" target="_blank" rel="noreferrer">Supported Regions</a>.
+              <a href="https://www.anthropic.com/supported-countries" target="_blank" rel="noreferrer">Supported Regions</a>,
+              <a href="https://code.claude.com/docs/en/legal-and-compliance" target="_blank" rel="noreferrer">Claude Code legal guidance</a>, and
+              <a href="https://www.anthropic.com/legal/trademark-guidelines" target="_blank" rel="noreferrer">Trademark Guidelines</a>.
             </p>
           </section>
         </article>
@@ -408,7 +415,7 @@ npm uninstall -g @nathanpixodeo/claude-profile-manager</code></pre>
     </main>
 
     <footer class="site-footer docs-footer">
-      <p><strong>Profile CLI documentation</strong> <span>Verified for package v0.2.2.</span></p>
+      <p><strong>Profile Switcher documentation</strong> <span>Verified for package v1.0.0.</span></p>
       <p>Independent and unofficial. Static page; no analytics or tracking.</p>
       <div><a href="./index.html">Overview</a> · <a href="#top">Back to top <span aria-hidden="true">↑</span></a></div>
     </footer>

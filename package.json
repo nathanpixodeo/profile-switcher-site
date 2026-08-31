@@ -1,9 +1,9 @@
 {
-  "name": "claude-profile-manager-landing",
+  "name": "profile-switcher-site",
   "version": "1.0.0",
   "private": true,
-  "description": "Static landing page for the unofficial Claude Profile Manager CLI.",
-  "license": "UNLICENSED",
+  "description": "Static landing page and documentation for Profile Switcher.",
+  "license": "MIT",
   "scripts": {
     "test": "node --test",
     "verify": "node --check script.js && node --test"

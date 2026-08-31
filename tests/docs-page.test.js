@@ -31,22 +31,21 @@ test('documentation covers the supported operational path', () => {
   }
 
   const requiredCommands = [
-    'claude-profiles add &lt;profile&gt; [--command &lt;claude-name&gt;] [--login]',
-    'claude-profiles run &lt;profile&gt; [--] [claude arguments...]',
-    'claude-profiles continue &lt;profile&gt;',
-    'claude-profiles resume &lt;profile&gt;',
-    'claude-profiles login &lt;profile&gt;',
-    'claude-profiles status &lt;profile&gt;',
-    'claude-profiles diagnose &lt;profile&gt;',
-    'claude-profiles repair-onboarding &lt;profile&gt;',
-    'claude-profiles share-sessions &lt;profile&gt; [--backup-existing]',
-    'claude-profiles share-skills &lt;profile&gt; [--backup-existing]',
-    'claude-profiles command create &lt;profile&gt; [claude-command]',
-    'claude-profiles command remove &lt;claude-command&gt;',
-    'claude-profiles command list',
-    'claude-profiles command sync',
-    'claude-profiles command clean',
-    'claude-profiles doctor',
+    'profile-switcher add &lt;profile&gt; [--command &lt;profile-name&gt;] [--login]',
+    'profile-switcher run &lt;profile&gt; [--] [claude arguments...]',
+    'profile-switcher continue &lt;profile&gt;',
+    'profile-switcher resume &lt;profile&gt;',
+    'profile-switcher login &lt;profile&gt;',
+    'profile-switcher status &lt;profile&gt;',
+    'profile-switcher diagnose &lt;profile&gt;',
+    'profile-switcher share-sessions &lt;profile&gt; --confirm-same-owner [--backup-existing]',
+    'profile-switcher share-skills &lt;profile&gt; --confirm-same-owner [--backup-existing]',
+    'profile-switcher command create &lt;profile&gt; [profile-command]',
+    'profile-switcher command remove &lt;profile-command&gt;',
+    'profile-switcher command list',
+    'profile-switcher command sync',
+    'profile-switcher command clean',
+    'profile-switcher doctor',
   ];
 
   for (const command of requiredCommands) {
@@ -56,6 +55,8 @@ test('documentation covers the supported operational path', () => {
   assert.match(docsHtml, /Exit code <code>2<\/code> means nothing changed/);
   assert.match(docsHtml, /profile directories, command mappings, sessions, state, skills, and credentials/i);
   assert.match(docsHtml, /Re-login for reserved <code>max<\/code> is intentionally blocked/);
+  assert.match(docsHtml, /Existing <code>~\/.claude-profiles<\/code> data/);
+  assert.doesNotMatch(docsHtml, /repair-onboarding/);
 });
 
 test('documentation navigation and controls are accessible', () => {
@@ -89,12 +90,14 @@ test('documentation is responsive, copyable, and dependency-free', () => {
 
 test('documentation uses public policy destinations only', () => {
   const requiredUrls = [
-    'https://www.npmjs.com/package/@nathanpixodeo/claude-profile-manager',
-    'https://unpkg.com/@nathanpixodeo/claude-profile-manager@0.2.1/NOTICE.md',
+    'https://www.npmjs.com/package/@nathanpixodeo/profile-switcher',
+    'https://unpkg.com/@nathanpixodeo/profile-switcher@1.0.0/NOTICE.md',
     'https://www.anthropic.com/legal/consumer-terms',
     'https://www.anthropic.com/legal/commercial-terms',
     'https://www.anthropic.com/legal/aup',
     'https://www.anthropic.com/supported-countries',
+    'https://code.claude.com/docs/en/legal-and-compliance',
+    'https://www.anthropic.com/legal/trademark-guidelines',
   ];
 
   for (const url of requiredUrls) {

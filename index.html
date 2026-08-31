@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta
       name="description"
-      content="An unofficial cross-platform CLI for isolated, separately authorized Claude Code profiles."
+      content="Profile Switcher is an independent cross-platform CLI for isolated Claude Code configuration directories."
     >
     <meta name="theme-color" content="#f2eadc">
-    <title>Profile CLI for Claude Code — Unofficial</title>
+    <title>Profile Switcher — Independent CLI for Claude Code</title>
     <link
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23181714'/%3E%3Cpath d='M14 16h12v32H14zm24 0h12L35 48H23z' fill='%23f2eadc'/%3E%3C/svg%3E"
@@ -20,9 +20,9 @@
     <a class="skip-link" href="#main-content">Skip to content</a>
 
     <header class="site-header">
-      <a class="wordmark" href="#top" aria-label="Profile CLI home">
+      <a class="wordmark" href="#top" aria-label="Profile Switcher home">
         <span class="wordmark-mark" aria-hidden="true">P/</span>
-        <span>Profile CLI</span>
+        <span>Profile Switcher</span>
         <span class="wordmark-note">unofficial</span>
       </a>
       <nav class="site-nav" aria-label="Primary navigation">
@@ -32,7 +32,7 @@
         <a href="#faq">FAQ</a>
         <a
           class="nav-source"
-          href="https://www.npmjs.com/package/@nathanpixodeo/claude-profile-manager"
+          href="https://www.npmjs.com/package/@nathanpixodeo/profile-switcher"
           target="_blank"
           rel="noreferrer"
         >npm <span aria-hidden="true">↗</span></a>
@@ -42,7 +42,7 @@
     <main id="main-content">
       <section class="hero" id="top" aria-labelledby="hero-title">
         <div class="hero-copy" data-reveal>
-          <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> Public npm utility · v0.2.1</p>
+          <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> Public npm utility · v1.0.0</p>
           <h1 id="hero-title">One terminal.<br><em>Clearer lanes.</em></h1>
           <p class="hero-lede">
             Run separately authorized Claude Code profiles from direct commands—each with its own
@@ -55,11 +55,11 @@
               <span>Node.js 22+</span>
             </div>
             <div class="command-row">
-              <code>npm install -g @nathanpixodeo/claude-profile-manager</code>
+              <code>npm install -g @nathanpixodeo/profile-switcher</code>
               <button
                 class="copy-button"
                 type="button"
-                data-copy="npm install -g @nathanpixodeo/claude-profile-manager"
+                data-copy="npm install -g @nathanpixodeo/profile-switcher"
                 aria-label="Copy npm install command"
               >
                 <span class="copy-label">Copy</span>
@@ -71,7 +71,7 @@
           <div class="hero-actions">
             <a
               class="button button-primary"
-              href="https://www.npmjs.com/package/@nathanpixodeo/claude-profile-manager"
+              href="https://www.npmjs.com/package/@nathanpixodeo/profile-switcher"
               target="_blank"
               rel="noreferrer"
             >View on npm <span aria-hidden="true">↗</span></a>
@@ -99,10 +99,10 @@
               <div class="terminal-body" aria-hidden="true">
                 <p><span class="prompt">$</span> claude</p>
                 <p class="terminal-output">profile: max <span>~/.claude</span></p>
-                <p><span class="prompt">$</span> claude-team --continue</p>
-                <p class="terminal-output">profile: team <span>~/.claude-profiles/team</span></p>
-                <p><span class="prompt">$</span> claude-studio --resume</p>
-                <p class="terminal-output">profile: studio <span>~/.claude-profiles/studio</span></p>
+                <p><span class="prompt">$</span> profile-team --continue</p>
+                <p class="terminal-output">profile: team <span>~/.profile-switcher/team</span></p>
+                <p><span class="prompt">$</span> profile-studio --resume</p>
+                <p class="terminal-output">profile: studio <span>~/.profile-switcher/studio</span></p>
                 <p class="cursor-line"><span class="prompt">$</span> <span class="cursor"></span></p>
               </div>
             </div>
@@ -156,18 +156,18 @@
           <article class="benefit-card benefit-card-featured" data-reveal>
             <span class="benefit-icon" aria-hidden="true">01</span>
             <h3>Isolated by default</h3>
-            <p>Named profiles live under <code>~/.claude-profiles/&lt;name&gt;</code>. The reserved <code>max</code> profile keeps using <code>~/.claude</code>.</p>
+            <p>Fresh named profiles live under <code>~/.profile-switcher/&lt;name&gt;</code>. Existing legacy storage remains readable; the reserved <code>max</code> profile keeps using <code>~/.claude</code>.</p>
             <div class="mini-map" aria-hidden="true">
               <span>~/.claude</span>
               <i></i>
-              <span>~/.claude-profiles/team</span>
+              <span>~/.profile-switcher/team</span>
             </div>
           </article>
 
           <article class="benefit-card" data-reveal>
             <span class="benefit-icon" aria-hidden="true">02</span>
             <h3>Commands you remember</h3>
-            <p>Create launchers like <code>claude-team</code> or <code>claude-studio</code>. Claude arguments and exit codes pass through.</p>
+            <p>Create launchers like <code>profile-team</code> or <code>profile-studio</code>. Claude arguments and exit codes pass through.</p>
           </article>
 
           <article class="benefit-card" data-reveal>
@@ -191,7 +191,7 @@
             <div>
               <h3>Install the CLI</h3>
               <p>Use the public npm package on Node.js 22 or newer.</p>
-              <code>npm i -g @nathanpixodeo/claude-profile-manager</code>
+              <code>npm i -g @nathanpixodeo/profile-switcher</code>
             </div>
           </li>
           <li data-reveal>
@@ -199,7 +199,7 @@
             <div>
               <h3>Add an authorized profile</h3>
               <p>Create its local directory and, optionally, a direct launcher.</p>
-              <code>claude-profiles add team --command claude-team --login</code>
+              <code>profile-switcher add team --command profile-team --login</code>
             </div>
           </li>
           <li data-reveal>
@@ -207,14 +207,14 @@
             <div>
               <h3>Work in its lane</h3>
               <p>Run from any project directory and pass normal Claude Code flags.</p>
-              <code>claude-team --continue</code>
+              <code>profile-team --continue</code>
             </div>
           </li>
         </ol>
 
         <div class="workflow-footer" data-reveal>
           <span>Prefer a menu?</span>
-          <code>claude-profiles</code>
+          <code>profile-switcher</code>
           <span>opens the interactive interface in a terminal.</span>
         </div>
       </section>
@@ -249,7 +249,7 @@
 
         <div class="doctor-note" data-reveal>
           <span class="doctor-prompt" aria-hidden="true">$</span>
-          <code>claude-profiles doctor</code>
+          <code>profile-switcher doctor</code>
           <p>Checks Node.js, npm, Claude Code, profile storage, and command directory readiness.</p>
         </div>
       </section>
@@ -289,7 +289,7 @@
               <strong>Proxy, intercept, modify, or automate Anthropic requests</strong>
             </div>
             <a
-              href="https://unpkg.com/@nathanpixodeo/claude-profile-manager@0.2.1/NOTICE.md"
+              href="https://unpkg.com/@nathanpixodeo/profile-switcher@1.0.0/NOTICE.md"
               target="_blank"
               rel="noreferrer"
             >Read complete packaged notice <span aria-hidden="true">↗</span></a>
@@ -301,7 +301,9 @@
           <a href="https://www.anthropic.com/legal/consumer-terms" target="_blank" rel="noreferrer">Consumer Terms</a>,
           <a href="https://www.anthropic.com/legal/commercial-terms" target="_blank" rel="noreferrer">Commercial Terms</a>,
           <a href="https://www.anthropic.com/legal/aup" target="_blank" rel="noreferrer">Usage Policy</a>, and
-          <a href="https://www.anthropic.com/supported-countries" target="_blank" rel="noreferrer">Supported Regions</a>.
+          <a href="https://www.anthropic.com/supported-countries" target="_blank" rel="noreferrer">Supported Regions</a>,
+          <a href="https://code.claude.com/docs/en/legal-and-compliance" target="_blank" rel="noreferrer">Claude Code legal guidance</a>, and
+          <a href="https://www.anthropic.com/legal/trademark-guidelines" target="_blank" rel="noreferrer">Trademark Guidelines</a>.
         </p>
       </section>
 
@@ -326,7 +328,7 @@
           </details>
           <details>
             <summary>What happens when I uninstall?<span aria-hidden="true"></span></summary>
-            <p>Use <code>claude-profiles command clean</code> first to remove generated launchers. Uninstalling keeps profile directories, command mappings, sessions, state, and credentials.</p>
+            <p>Use <code>profile-switcher command clean</code> first to remove generated launchers. Uninstalling keeps profile directories, command mappings, sessions, state, and credentials.</p>
           </details>
           <details>
             <summary>Is this an Anthropic product?<span aria-hidden="true"></span></summary>
@@ -341,11 +343,11 @@
           <p class="eyebrow eyebrow-dark">LOCAL ROUTING / CLEAR CONTEXTS</p>
           <h2 id="cta-title">Give each authorized profile<br>its own front door.</h2>
           <div class="cta-command">
-            <code>npm install -g @nathanpixodeo/claude-profile-manager</code>
+            <code>npm install -g @nathanpixodeo/profile-switcher</code>
             <button
               class="copy-button copy-button-dark"
               type="button"
-              data-copy="npm install -g @nathanpixodeo/claude-profile-manager"
+              data-copy="npm install -g @nathanpixodeo/profile-switcher"
               aria-label="Copy npm install command"
             ><span class="copy-label">Copy</span></button>
           </div>
@@ -353,12 +355,12 @@
           <div class="cta-links">
             <a
               class="button button-paper"
-              href="https://www.npmjs.com/package/@nathanpixodeo/claude-profile-manager"
+              href="https://www.npmjs.com/package/@nathanpixodeo/profile-switcher"
               target="_blank"
               rel="noreferrer"
             >Open npm package <span aria-hidden="true">↗</span></a>
             <a
-              href="https://unpkg.com/@nathanpixodeo/claude-profile-manager@0.2.1/NOTICE.md"
+              href="https://unpkg.com/@nathanpixodeo/profile-switcher@1.0.0/NOTICE.md"
               target="_blank"
               rel="noreferrer"
             >Read packaged notice <span aria-hidden="true">↗</span></a>
@@ -368,8 +370,8 @@
     </main>
 
     <footer class="site-footer">
-      <p><strong>Profile CLI for Claude Code</strong> <span>Independent and unofficial.</span></p>
-      <p>Static page. No analytics, cookies, external fonts, or tracking scripts.</p>
+      <p><strong>Profile Switcher</strong> <span>For Claude Code. Independent and unofficial.</span></p>
+      <p>Static page. No analytics, telemetry, cookies, external fonts, or tracking scripts.</p>
       <a href="#top">Back to top <span aria-hidden="true">↑</span></a>
     </footer>
   </body>
