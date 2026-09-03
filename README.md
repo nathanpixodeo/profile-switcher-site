@@ -10,6 +10,7 @@ The site uses local HTML, CSS, and JavaScript only. It has no build step, runtim
 
 - `index.html` — product overview and installation page.
 - `docs.html` — setup, migration, commands, isolation, sharing, troubleshooting, and uninstall guide.
+- `legacy-redirect/` — deployable 301 redirect for the retired pre-rebrand hostname.
 
 ## Preview
 
