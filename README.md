@@ -1,6 +1,6 @@
 # Profile Switcher site
 
-Static landing page and documentation for [`@nathanpixodeo/profile-switcher`](https://www.npmjs.com/package/@nathanpixodeo/profile-switcher).
+Static landing page and documentation for [`@nexkit/profile-switcher`](https://www.npmjs.com/package/@nexkit/profile-switcher).
 
 Production site: https://profile-switcher.pages.dev/
 

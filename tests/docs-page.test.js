@@ -90,8 +90,8 @@ test('documentation is responsive, copyable, and dependency-free', () => {
 
 test('documentation uses public policy destinations only', () => {
   const requiredUrls = [
-    'https://www.npmjs.com/package/@nathanpixodeo/profile-switcher',
-    'https://unpkg.com/@nathanpixodeo/profile-switcher@1.0.0/NOTICE.md',
+    'https://www.npmjs.com/package/@nexkit/profile-switcher',
+    'https://unpkg.com/@nexkit/profile-switcher@1.0.0/NOTICE.md',
     'https://www.anthropic.com/legal/consumer-terms',
     'https://www.anthropic.com/legal/commercial-terms',
     'https://www.anthropic.com/legal/aup',

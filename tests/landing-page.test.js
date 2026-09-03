@@ -17,7 +17,7 @@ function count(pattern, content = html) {
 
 test('landing page has required content and accurate product claims', () => {
   assert.match(html, /Profile Switcher/);
-  assert.match(html, /npm install -g @nathanpixodeo\/profile-switcher/);
+  assert.match(html, /npm install -g @nexkit\/profile-switcher/);
   assert.match(html, /Node\.js 22\+/);
   assert.match(html, /Windows 10, 11, and Server/);
   assert.match(html, /Node\.js-supported distributions/);
@@ -56,8 +56,8 @@ test('landing page exposes required sections and accessibility landmarks', () =>
 
 test('landing links use public destinations and safe external-link attributes', () => {
   const requiredUrls = [
-    'https://www.npmjs.com/package/@nathanpixodeo/profile-switcher',
-    'https://unpkg.com/@nathanpixodeo/profile-switcher@1.0.0/NOTICE.md',
+    'https://www.npmjs.com/package/@nexkit/profile-switcher',
+    'https://unpkg.com/@nexkit/profile-switcher@1.0.0/NOTICE.md',
     'https://www.anthropic.com/legal/consumer-terms',
     'https://www.anthropic.com/legal/commercial-terms',
     'https://www.anthropic.com/legal/aup',
