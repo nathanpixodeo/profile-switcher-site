@@ -383,6 +383,19 @@ h1 em::after {
   background: var(--acid);
 }
 
+.button-support {
+  color: var(--ink);
+  border-color: var(--ink);
+  background: var(--acid);
+  box-shadow: 0.25rem 0.25rem 0 var(--orange);
+}
+
+.button-support:hover {
+  color: var(--paper-light);
+  background: var(--orange-dark);
+  box-shadow: 0.25rem 0.25rem 0 var(--ink);
+}
+
 .text-link {
   font-size: 0.8rem;
   font-weight: 700;

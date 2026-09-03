@@ -57,7 +57,8 @@ test('landing page exposes required sections and accessibility landmarks', () =>
 test('landing links use public destinations and safe external-link attributes', () => {
   const requiredUrls = [
     'https://www.npmjs.com/package/@nexkit/profile-switcher',
-    'https://unpkg.com/@nexkit/profile-switcher@1.0.0/NOTICE.md',
+    'https://unpkg.com/@nexkit/profile-switcher@1.0.1/NOTICE.md',
+    'https://paypal.me/shivakira95',
     'https://www.anthropic.com/legal/consumer-terms',
     'https://www.anthropic.com/legal/commercial-terms',
     'https://www.anthropic.com/legal/aup',
@@ -69,6 +70,9 @@ test('landing links use public destinations and safe external-link attributes', 
   for (const url of requiredUrls) {
     assert.ok(html.includes(`href="${url}"`), `Missing public URL: ${url}`);
   }
+
+  assert.ok(count(/href="https:\/\/paypal\.me\/shivakira95"/g) >= 2, 'Donation link should appear in the hero and final CTA.');
+  assert.match(html, /Buy me a beer/);
 
   assert.doesNotMatch(
     html,

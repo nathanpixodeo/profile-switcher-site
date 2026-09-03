@@ -91,7 +91,8 @@ test('documentation is responsive, copyable, and dependency-free', () => {
 test('documentation uses public policy destinations only', () => {
   const requiredUrls = [
     'https://www.npmjs.com/package/@nexkit/profile-switcher',
-    'https://unpkg.com/@nexkit/profile-switcher@1.0.0/NOTICE.md',
+    'https://unpkg.com/@nexkit/profile-switcher@1.0.1/NOTICE.md',
+    'https://paypal.me/shivakira95',
     'https://www.anthropic.com/legal/consumer-terms',
     'https://www.anthropic.com/legal/commercial-terms',
     'https://www.anthropic.com/legal/aup',
@@ -103,6 +104,8 @@ test('documentation uses public policy destinations only', () => {
   for (const url of requiredUrls) {
     assert.ok(docsHtml.includes(`href="${url}"`), `Missing public URL: ${url}`);
   }
+
+  assert.match(docsHtml, /Buy me a beer/);
 
   assert.doesNotMatch(docsHtml, /https:\/\/github\.com\/nathanpixodeo\/claude-profile-cli/);
   for (const anchor of docsHtml.match(/<a\b[\s\S]*?<\/a>/g) || []) {
